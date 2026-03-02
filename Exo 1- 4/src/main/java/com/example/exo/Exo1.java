@@ -1,4 +1,4 @@
-package com.example.tp1;
+package com.example.exo;
 import reactor.core.publisher.Flux;
 
 public class Exo1 {

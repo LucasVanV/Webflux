@@ -1,4 +1,4 @@
-package com.example.tp1;
+package com.example.exo;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
