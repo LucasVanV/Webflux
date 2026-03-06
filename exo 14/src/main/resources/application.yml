@@ -1,17 +1,17 @@
 spring:
-    application:
-        name: exo14
-    r2dbc:
-        url: r2dbc:postgresql://localhost:5432/exo14db
-        username: postgres
-        password: postgres
+  application:
+    name: exo14
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/exo14db
+    username: postgres
+    password: postgres
 
-    sql:
-        init:
-            mode: always
-            platform: postgresql
+  sql:
+    init:
+      mode: always
+      platform: postgresql
 
   security:
     user:
-      name: ignored
-      password: ignored
+    name: ignored
+    password: ignored
