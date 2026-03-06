@@ -1,40 +1,71 @@
-# Exercice 13 - API de gestion des produits avec stock
+# Exercice 14 — Sécurisation d'une API de réservation de salles
 
 ## Description
 
-Cette API réactive permet de gérer un catalogue de produits avec Spring WebFlux et R2DBC.
+Ce projet est une API développée avec **Spring WebFlux**, **Spring Security** et **PostgreSQL**.
+
+Le serveur permet de gérer des salles de réunion avec une sécurité basée sur les rôles :
+
+- **USER** : peut consulter les salles disponibles
+- **ADMIN** : peut consulter, ajouter et supprimer des salles
+
+L’API utilise une authentification **HTTP Basic Auth**.
+
+---
 
 ## Fonctionnalités
 
-- Récupérer tous les produits
-- Récupérer un produit par ID
-- Créer un produit
-- Mettre à jour un produit
-- Supprimer un produit
-- Rechercher des produits par nom
-- Réduire le stock après un achat
-- Retourner une erreur si le stock est insuffisant
+Le serveur expose les endpoints suivants :
 
-## Endpoints
+### `GET /api/rooms`
 
-### GET /api/products
+Retourne la liste de toutes les salles disponibles.
 
-Retourne tous les produits
+**Accès :**
 
-### GET /api/products/{id}
+- utilisateur authentifié `USER`
+- utilisateur authentifié `ADMIN`
 
-Retourne un produit par ID
+---
 
-### POST /api/products
+### `POST /api/rooms`
 
-Crée un produit
+Ajoute une nouvelle salle.
 
-Exemple JSON :
+**Accès :**
+
+- uniquement `ADMIN`
+
+**Body JSON attendu :**
 
 ```json
 {
-  "name": "iPhone 25",
-  "price": 9999.99,
-  "stock": 2
+  "name": "Salle Innovation"
 }
 ```
+
+## Authentification
+
+Pour accéder à l’API, il faut utiliser une authentification **Basic Auth**.
+
+### Utilisateur simple (USER)
+
+login : `user`  
+mot de passe : `user123`
+
+Peut :
+
+- consulter les salles
+
+---
+
+### Administrateur (ADMIN)
+
+login : `admin`  
+mot de passe : `admin123`
+
+Peut :
+
+- consulter les salles
+- ajouter une salle
+- supprimer une salle
