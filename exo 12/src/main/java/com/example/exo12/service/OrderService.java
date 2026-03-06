@@ -54,4 +54,8 @@ public class OrderService {
         long offset = (long) page * size;
         return orderRepository.findPaged(size, offset);
     }
+
+    public Flux<Order> getOrdersByCustomerName(String customerName) {
+    return orderRepository.findByCustomerName(customerName);
+}
 }

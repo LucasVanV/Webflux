@@ -13,6 +13,8 @@ import reactor.core.publisher.Flux;
 public interface OrderRepository extends ReactiveCrudRepository<Order, Long> {
     Flux<Order> findByStatus(OrderStatus status);
 
+    Flux<Order> findByCustomerName(String customerName);
+
     @Query("SELECT * FROM orders LIMIT :size OFFSET :offset")
     Flux<Order> findPaged(int size, long offset);
 }

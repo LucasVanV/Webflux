@@ -70,4 +70,9 @@ public class OrderController {
             @RequestParam(defaultValue = "5") int size) {
         return orderService.getPagedOrders(page, size);
     }
+
+    @GetMapping("/customer/{customerName}")
+    public Flux<Order> getOrdersByCustomerName(@PathVariable String customerName) {
+        return orderService.getOrdersByCustomerName(customerName);
+    }
 }
